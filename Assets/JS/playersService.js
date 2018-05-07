@@ -70,31 +70,62 @@ function PlayersService(callback) {
         });
     }
 
-    this.addToMyTeam = function addToMyTeam(playerId, cb){
-        return playersData.filter(function (player){
-            if (player.id == playerId){
-                if(myTeam.length<=10) {
-                    myTeam.push(player)
-                    return cb(myTeam);
+    this.addToMyTeam = function addToMyTeam(playerId, cb) {
+        return playersData.filter(function (player) {
+            if (player.id == playerId) {
+                if (!comparePlayer(player)) {
+                    if (myTeam.length <= 10) {
+                        if (!comparePosition(player)) {
+                            if (myTeam.push(player)) {
+                                return cb(myTeam);
+                            }
+                        } else {
+                            alert("Cannot add player. That position is already full.")
+                        }
+                    } else {
+                        alert("Team is full. Hand-egg-ball only allows 11 players, sorry!")
+                    }
                 } else {
-                    alert("Team is full. Hand-egg-ball only allows 11 players, sorry!")
+                    alert("Cannot add the same player twice. Nice try, cheater!")
                 }
-                
+
             }
         });
     }
+
+    function comparePlayer(player) {
+        for (var i = 0; i < myTeam.length; i++) {
+            var element = myTeam[i];
+            if (player.id == element.id) {
+                return true
+            }
+        }
+        return false
+    }
+    function comparePosition(player) {
+        for (var i = 0; i < myTeam.length; i++) {
+            var element = myTeam[i];
+            if (player.position == element.position) {
+                return true
+            }
+
+        }
+        return false
+    }
+
+
     this.removeFromTeam = function removeFromTeam(removeId, draw) {
 
-        var removeMember = myTeam.find(function(char){
+        var removeMember = myTeam.find(function (char) {
             return char.id == removeId
         })
 
         var index = myTeam.indexOf(removeMember)
 
-        myTeam.splice(index,1)
+        myTeam.splice(index, 1)
 
         draw(myTeam)
     };
-    
+
     loadPlayersData(); //call the function above every time we create a new service
 } 
