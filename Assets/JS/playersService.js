@@ -69,6 +69,32 @@ function PlayersService(callback) {
             callback(playersData)
         });
     }
+
+    this.addToMyTeam = function addToMyTeam(playerId, cb){
+        return playersData.filter(function (player){
+            if (player.id == playerId){
+                if(myTeam.length<=10) {
+                    myTeam.push(player)
+                    return cb(myTeam);
+                } else {
+                    alert("Team is full. Hand-egg-ball only allows 11 players, sorry!")
+                }
+                
+            }
+        });
+    }
+    this.removeFromTeam = function removeFromTeam(removeId, draw) {
+
+        var removeMember = myTeam.find(function(char){
+            return char.id == removeId
+        })
+
+        var index = myTeam.indexOf(removeMember)
+
+        myTeam.splice(index,1)
+
+        draw(myTeam)
+    };
     
     loadPlayersData(); //call the function above every time we create a new service
 } 
