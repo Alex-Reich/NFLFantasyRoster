@@ -32,6 +32,6 @@
 .full-screen {
     height: 80vh
 }
-/* .body-bg {
-    color: #013369
-} */
+.body-bg {
+    background-color: #D50A0A
+}
