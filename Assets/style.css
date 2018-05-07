@@ -1,0 +1,37 @@
+.font {
+    font-family: fantasy;
+}
+/* It would be cool to make the font color match the primary color of the team. */
+
+.bg-blue {
+    background-color: #013369;
+    color: white;
+}
+.bg-red {
+    background-color: #D50A0A;
+    color: #013369
+}
+.round-card {
+    border-radius: 15%;
+    background-color: #013369;
+    color: white;
+    margin: 1vh
+}
+.search-style {
+    height: 10vh;
+}
+.btn-font-size {
+    font-size: 20pt
+}
+.header-font-size {
+    font-size: 4rem;
+}
+.rules-font {
+    font-size: 20pt
+}
+.full-screen {
+    height: 80vh
+}
+/* .body-bg {
+    color: #013369
+} */

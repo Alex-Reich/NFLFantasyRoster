@@ -20,13 +20,13 @@ function PlayersController() {
         for (var i = 0; i < players.length; i++) {
             var player = players[i];
             template += `
-            <div class="card align-items-center playerCard">
+            <div class="card align-items-center playerCard round-card">
                 <img src="${player.photo}" alt="">
                 <div class="card-body align-items-center">
                     <h1>${player.fullname}</h1>
                     <h2>Position: ${player.position}</h2>
                     <h2>Team: ${player.pro_team}</h2>
-                    <button onclick="app.controllers.playersController.addToMyTeam(${player.id})">Add to my team</button>
+                    <button class="btn-font-size" onclick="app.controllers.playersController.addToMyTeam(${player.id})">Sign  <i class="fas fa-pencil-alt"></i></button>
                 </div>
             </div>
             `
@@ -35,17 +35,17 @@ function PlayersController() {
     }
 
     function drawMyTeam(players) {
-        var template = "<h1>The Squad</h1>"
+        var template = "<h1>Your Squad</h1>"
         for (var i = 0; i < players.length; i++) {
             var player = players[i];
             template += `
-                <div class="card align-items-center playerCard">
+                <div class="card align-items-center playerCard round-card">
                     <img src="${player.photo}" alt="">
                     <div class="card-body align-items-center">
                         <h1>${player.fullname}</h1>
                         <h2>Position: ${player.position}</h2>
                         <h2>Team: ${player.pro_team}</h2>
-                        <button onclick="app.controllers.playersController.removeFromTeam(${player.id})">Remove from Team</button>
+                        <button class="btn-font-size" onclick="app.controllers.playersController.removeFromTeam(${player.id})">Cut  <i class="fas fa-cut"></i></button>
                     </div>
                 </div>
                 `
